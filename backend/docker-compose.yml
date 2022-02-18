@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+    postgres:
+        image: postgres:latest
+        restart: always
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=123456
+        ports:
+          - '5432:5432'
+        volumes: 
+          - ./postgres-data:/var/lib/postgresql/data
+          # copy the sql script to create tables
+          - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    spacy:
+        image: jgontrum/spacyapi:en_v2
+        restart: always
+        ports:
+          - '8000:80'
+    component1:
+        image: backend/component1:latest
+        restart: always
+        ports:
+          - '8080:8080'

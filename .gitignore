@@ -1,9 +1,5 @@
-*
-
-!backend/component1/**
-!backend/component4/**
-!backend/create-tables.sql
-!backend/docker-compose.yml
-!datascience/component1/**
-!datascience/component2/**
-!.gitignore
+backend/postgres-data
+.*
+datascience/component1/output
+backend/component4/target
+backend/component1/target
